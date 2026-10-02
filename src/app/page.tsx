@@ -592,10 +592,13 @@ export default function HomePage() {
               </div>
 
               <div className="pt-1">
-                <div className="mb-3 flex items-center justify-between text-xs font-bold text-ink-700">
-                  <span>Search radius</span>
-                  <span className="rounded-full bg-brand-100 px-2.5 py-1 font-mono text-brand-700">
-                    {previewRadius} km
+                <div className="mb-2.5 flex items-baseline justify-between gap-3">
+                  <span className="text-sm font-medium text-ink-700">
+                    Search radius
+                  </span>
+                  <span className="text-sm font-semibold tabular-nums text-ink-950">
+                    {previewRadius}
+                    <span className="ml-1 font-normal text-ink-400">km</span>
                   </span>
                 </div>
                 <input
@@ -607,10 +610,10 @@ export default function HomePage() {
                   className="range-accent w-full"
                   aria-label="Search radius in kilometers"
                 />
-                <div className="mt-2 flex justify-between text-[11px] font-medium text-ink-400">
-                  <span>1 km</span>
-                  <span>10 km</span>
-                  <span>20 km</span>
+                <div className="mt-2 flex justify-between text-[11px] text-ink-400">
+                  <span>1</span>
+                  <span>10</span>
+                  <span>20</span>
                 </div>
               </div>
             </div>
