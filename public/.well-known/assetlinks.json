@@ -5,8 +5,9 @@
       "namespace": "android_app",
       "package_name": "dev.varbox.atmfinder",
       "sha256_cert_fingerprints": [
-        "REPLACE_WITH_YOUR_RELEASE_KEYSTORE_OR_PLAY_CONSOLE_APP_SIGNING_SHA256_FINGERPRINT"
+        "F8:16:FF:B4:44:25:B2:C9:67:33:2B:34:D4:3B:F5:D9:0C:14:7A:B2:CA:DC:21:2E:D1:66:72:D1:E8:79:91:72"
       ]
     }
   }
 ]
+
