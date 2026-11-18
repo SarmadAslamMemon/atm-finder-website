@@ -45,6 +45,9 @@ export const metadata: Metadata = {
     "Easypaisa cash point",
   ],
   alternates: { canonical: "/" },
+  verification: {
+    google: "cztur1qtgPpApMcXqAUw9BF8bPr_EvWbVV-xgGffggE",
+  },
   openGraph: {
     type: "website",
     locale: "en_PK",
@@ -85,6 +88,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${jakarta.variable} ${urdu.variable}`}>
+      <head>
+        <meta
+          name="google-site-verification"
+          content="cztur1qtgPpApMcXqAUw9BF8bPr_EvWbVV-xgGffggE"
+        />
+      </head>
       <body className="min-h-screen flex flex-col font-sans antialiased bg-white text-ink-950 pb-24 sm:pb-0">
         <SiteHeader />
 
