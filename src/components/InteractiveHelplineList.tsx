@@ -1,13 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { PhoneCall, Copy, Check, ShieldAlert } from "lucide-react";
+import Image from "next/image";
+import { PhoneCall, Copy, Check } from "lucide-react";
 
 interface Helpline {
   bank: string;
   number: string;
   dialNumber: string;
   notes: string;
+  logo: string;
 }
 
 const HELPLINES: Helpline[] = [
@@ -16,36 +18,42 @@ const HELPLINES: Helpline[] = [
     number: "021-111-111-425",
     dialNumber: "021111111425",
     notes: "24/7 ATM card block & dispute desk",
+    logo: "/images/banks/bank_hbl.jpg",
   },
   {
     bank: "Meezan Bank",
     number: "021-111-331-336",
     dialNumber: "021111331336",
     notes: "Immediate biometric & card block",
+    logo: "/images/banks/bank_meezan.jpg",
   },
   {
     bank: "UBL (United Bank)",
     number: "021-111-825-888",
     dialNumber: "021111825888",
     notes: "24/7 ATM transaction support",
+    logo: "/images/banks/bank_ubl.jpg",
   },
   {
     bank: "MCB Bank",
     number: "021-111-000-622",
     dialNumber: "021111000622",
     notes: "Instant debit card deactivation",
+    logo: "/images/banks/bank_mcb.jpg",
   },
   {
     bank: "Bank Alfalah",
     number: "021-111-225-111",
     dialNumber: "021111225111",
     notes: "24/7 customer service & ATM help",
+    logo: "/images/banks/bank_alfalah.jpg",
   },
   {
     bank: "Askari Bank",
     number: "051-111-000-787",
     dialNumber: "051111000787",
     notes: "Emergency card stoppage helpline",
+    logo: "/images/banks/bank_askari.jpg",
   },
 ];
 
@@ -68,7 +76,7 @@ export default function InteractiveHelplineList() {
             Emergency Bank Helplines (24/7 ATM Dispute)
           </h3>
           <p className="text-xs sm:text-sm text-ink-500 mt-1">
-            Tap to call directly or copy number to block your card immediately.
+            Tap the call button directly or copy the number to block your card immediately.
           </p>
         </div>
       </div>
@@ -81,12 +89,25 @@ export default function InteractiveHelplineList() {
               key={h.bank}
               className="group flex items-center justify-between gap-3 rounded-2xl border border-canvas-border bg-canvas-soft/80 p-4 transition hover:border-brand-300 hover:bg-white hover:shadow-xs"
             >
-              <div className="min-w-0 flex-1">
-                <div className="font-bold text-sm text-ink-950 truncate">{h.bank}</div>
-                <div className="text-xs font-mono font-semibold text-brand-600 mt-0.5">
-                  {h.number}
+              <div className="flex items-center gap-3 min-w-0 flex-1">
+                <div className="relative h-11 w-11 flex-shrink-0 overflow-hidden rounded-xl border border-canvas-border bg-white shadow-2xs">
+                  <Image
+                    src={h.logo}
+                    alt={h.bank}
+                    width={44}
+                    height={44}
+                    className="h-full w-full object-cover"
+                  />
                 </div>
-                <div className="text-[11px] text-ink-400 mt-0.5">{h.notes}</div>
+
+                <div className="min-w-0 flex-1">
+                  <div className="font-bold text-sm text-ink-950 truncate">{h.bank}</div>
+                  {/* Clean human font — NOT vibe/terminal monospace */}
+                  <div className="font-sans text-[15px] font-extrabold text-ink-900 tracking-normal mt-0.5">
+                    {h.number}
+                  </div>
+                  <div className="text-[11px] text-ink-500 mt-0.5 truncate">{h.notes}</div>
+                </div>
               </div>
 
               <div className="flex items-center gap-2 flex-shrink-0">
@@ -103,9 +124,10 @@ export default function InteractiveHelplineList() {
                   )}
                 </button>
 
+                {/* Brand CTA color — NOT plain black */}
                 <a
                   href={`tel:${h.dialNumber}`}
-                  className="flex items-center gap-1.5 rounded-xl bg-ink-950 px-3 py-2 text-xs font-bold text-white transition hover:bg-brand-600"
+                  className="flex items-center gap-1.5 rounded-xl bg-brand-500 hover:bg-brand-600 active:scale-95 px-3.5 py-2 text-xs font-bold text-white shadow-xs transition-all"
                 >
                   <PhoneCall className="h-3.5 w-3.5" />
                   <span>Call</span>

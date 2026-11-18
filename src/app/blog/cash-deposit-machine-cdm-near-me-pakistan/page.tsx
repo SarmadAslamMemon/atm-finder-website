@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, Clock, ArrowDownToLine, Banknote, ShieldCheck } from "lucide-react";
 import InteractiveCdmChecker from "@/components/InteractiveCdmChecker";
 import InteractiveFaqAccordion from "@/components/InteractiveFaqAccordion";
@@ -153,7 +154,7 @@ export default function CdmGuideArticlePage() {
             {/* Section 2: Interactive Bank CDM & Note Validator */}
             <InteractiveCdmChecker />
 
-            {/* Section 3 */}
+            {/* Section 3: Real App Screenshot Showcase for CDM Filter */}
             <section className="rounded-3xl border border-canvas-border bg-white p-7 sm:p-9 shadow-xs">
               <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-ink-950 mb-4 flex items-center gap-2.5">
                 <ShieldCheck className="h-5 w-5 text-brand-500 flex-shrink-0" />
@@ -163,7 +164,7 @@ export default function CdmGuideArticlePage() {
                 You do not need a plastic ATM debit card to deposit money into a personal, business, or
                 family account. Follow these 4 straightforward steps:
               </p>
-              <div className="space-y-3 pl-1">
+              <div className="space-y-3 pl-1 mb-6">
                 <div className="flex items-start gap-3 rounded-2xl bg-canvas-soft border border-canvas-border/80 p-3.5">
                   <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-500 text-xs font-bold text-white flex-shrink-0 mt-0.5">
                     1
@@ -212,16 +213,31 @@ export default function CdmGuideArticlePage() {
                   </div>
                 </div>
               </div>
+
+              {/* Real App Screenshot Showcase */}
+              <div className="rounded-2xl border border-canvas-border bg-canvas-soft p-4 sm:p-6">
+                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl border border-canvas-border bg-ink-950/5 shadow-sm">
+                  <Image
+                    src="/images/app-screens/branch-detail.png"
+                    alt="ATM Finder Pakistan Branch Detail with CDM and 24/7 Amenities"
+                    fill
+                    className="object-cover object-top"
+                  />
+                </div>
+                <div className="text-center text-xs text-ink-500 mt-3 font-medium">
+                  ATM Finder Pakistan: Branch details screen showing 24/7 hours, CDM cash deposit availability, and one-tap directions
+                </div>
+              </div>
             </section>
 
             {/* In-Article App Banner */}
             <div className="rounded-3xl border border-brand-200 bg-brand-50/70 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-brand-600 block mb-1">
-                  CDM Filter Included
+                  ATM Finder Pakistan
                 </span>
                 <h3 className="text-lg sm:text-xl font-bold text-ink-950">
-                  Looking for a CDM Near You Right Now?
+                  Looking for a Working CDM Near You?
                 </h3>
                 <p className="text-sm text-ink-500 mt-1">
                   Use the ATM Finder app to filter specifically for bank machines with 24/7 Cash
@@ -232,7 +248,7 @@ export default function CdmGuideArticlePage() {
                 href="https://play.google.com/store/apps/details?id=dev.varbox.atmfinder"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-accent cta-shine flex-shrink-0 px-5 py-2.5 text-xs font-bold inline-flex items-center gap-2"
+                className="btn-accent cta-shine flex-shrink-0 px-6 py-3 text-sm font-bold inline-flex items-center gap-2"
               >
                 <ArrowDownToLine className="h-4 w-4" />
                 <span>Get on Google Play</span>

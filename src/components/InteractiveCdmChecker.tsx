@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle2, XCircle, Building2, Banknote, ShieldAlert, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { CheckCircle2, XCircle, Building2, Banknote } from "lucide-react";
 
 interface BankCdmInfo {
   name: string;
+  logo: string;
   cardless: boolean;
   dailyLimit: string;
   notesPerInsert: string;
@@ -15,14 +17,16 @@ interface BankCdmInfo {
 const BANKS: BankCdmInfo[] = [
   {
     name: "Meezan Bank",
+    logo: "/images/banks/bank_meezan.jpg",
     cardless: true,
     dailyLimit: "Rs. 250,000 / day",
     notesPerInsert: "Up to 100 notes per drop",
     fees: "Free (Instant Credit)",
-    notes: "Largest CDM network in Pakistan. Requires valid CNIC for cardless deposits.",
+    notes: "Largest Islamic CDM network in Pakistan. Requires valid CNIC for cardless deposits.",
   },
   {
     name: "HBL (Habib Bank)",
+    logo: "/images/banks/bank_hbl.jpg",
     cardless: true,
     dailyLimit: "Rs. 200,000 / day",
     notesPerInsert: "Up to 200 notes per drop",
@@ -31,6 +35,7 @@ const BANKS: BankCdmInfo[] = [
   },
   {
     name: "Bank Alfalah",
+    logo: "/images/banks/bank_alfalah.jpg",
     cardless: true,
     dailyLimit: "Rs. 200,000 / day",
     notesPerInsert: "Up to 100 notes per drop",
@@ -39,6 +44,7 @@ const BANKS: BankCdmInfo[] = [
   },
   {
     name: "UBL (United Bank)",
+    logo: "/images/banks/bank_ubl.jpg",
     cardless: true,
     dailyLimit: "Rs. 250,000 / day",
     notesPerInsert: "Up to 100 notes per drop",
@@ -73,52 +79,84 @@ export default function InteractiveCdmChecker() {
           Select Your Bank to Check CDM Rules &amp; Limits
         </h3>
 
-        {/* Bank Tabs */}
-        <div className="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-2">
-          {BANKS.map((bank, idx) => (
-            <button
-              key={bank.name}
-              type="button"
-              onClick={() => setSelectedBankIndex(idx)}
-              className={`rounded-2xl px-4 py-3 text-xs sm:text-sm font-bold transition focus:outline-none ${
-                selectedBankIndex === idx
-                  ? "bg-ink-950 text-white shadow-soft"
-                  : "border border-canvas-border bg-canvas-soft text-ink-700 hover:bg-white hover:border-brand-300"
-              }`}
-            >
-              {bank.name}
-            </button>
-          ))}
+        {/* Bank Tabs with Real Logos */}
+        <div className="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+          {BANKS.map((bank, idx) => {
+            const isSelected = selectedBankIndex === idx;
+            return (
+              <button
+                key={bank.name}
+                type="button"
+                onClick={() => setSelectedBankIndex(idx)}
+                className={`flex items-center gap-2.5 rounded-2xl p-2.5 sm:p-3 text-left transition focus:outline-none ${
+                  isSelected
+                    ? "border-2 border-brand-500 bg-brand-50/50 shadow-xs"
+                    : "border border-canvas-border bg-canvas-soft/80 hover:bg-white hover:border-brand-200"
+                }`}
+              >
+                <div className="relative h-8 w-8 flex-shrink-0 overflow-hidden rounded-lg border border-canvas-border bg-white">
+                  <Image
+                    src={bank.logo}
+                    alt={bank.name}
+                    width={32}
+                    height={32}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <span
+                  className={`text-xs sm:text-sm font-bold truncate ${
+                    isSelected ? "text-brand-600" : "text-ink-800"
+                  }`}
+                >
+                  {bank.name}
+                </span>
+              </button>
+            );
+          })}
         </div>
 
         {/* Selected Bank Details Panel */}
         <div className="mt-5 rounded-2xl border border-canvas-border bg-canvas-soft/80 p-5 sm:p-6">
-          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-canvas-border pb-4 mb-4">
-            <div>
-              <div className="text-lg font-bold text-ink-950">{selectedBank.name} CDM</div>
-              <div className="text-xs text-ink-500">{selectedBank.notes}</div>
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-canvas-border pb-4 mb-4">
+            <div className="flex items-center gap-3">
+              <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-xl border border-canvas-border bg-white shadow-xs">
+                <Image
+                  src={selectedBank.logo}
+                  alt={selectedBank.name}
+                  width={48}
+                  height={48}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div>
+                <div className="text-base sm:text-lg font-bold text-ink-950">
+                  {selectedBank.name} Cash Deposit Machine
+                </div>
+                <div className="text-xs text-ink-500 mt-0.5">{selectedBank.notes}</div>
+              </div>
             </div>
+
             <span className="rounded-full bg-cash-50 border border-cash-200 px-3 py-1 text-xs font-bold text-cash-700">
               Cardless Deposit: Available
             </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
-            <div className="rounded-xl bg-white border border-canvas-border p-3.5">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 text-xs">
+            <div className="rounded-xl bg-white border border-canvas-border p-3.5 shadow-2xs">
               <span className="text-ink-400 block font-medium">Daily Deposit Limit</span>
               <strong className="text-sm font-extrabold text-ink-950 mt-0.5 block">
                 {selectedBank.dailyLimit}
               </strong>
             </div>
 
-            <div className="rounded-xl bg-white border border-canvas-border p-3.5">
+            <div className="rounded-xl bg-white border border-canvas-border p-3.5 shadow-2xs">
               <span className="text-ink-400 block font-medium">Notes Per Single Drop</span>
               <strong className="text-sm font-extrabold text-ink-950 mt-0.5 block">
                 {selectedBank.notesPerInsert}
               </strong>
             </div>
 
-            <div className="rounded-xl bg-white border border-canvas-border p-3.5">
+            <div className="rounded-xl bg-white border border-canvas-border p-3.5 shadow-2xs">
               <span className="text-ink-400 block font-medium">Deposit Fee</span>
               <strong className="text-sm font-extrabold text-cash-600 mt-0.5 block">
                 {selectedBank.fees}

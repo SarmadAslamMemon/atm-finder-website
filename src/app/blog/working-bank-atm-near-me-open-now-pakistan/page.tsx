@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, Clock, MapPin, ShieldCheck, ArrowDownToLine, PhoneCall } from "lucide-react";
 import InteractiveFeeCalculator from "@/components/InteractiveFeeCalculator";
 import InteractiveHelplineList from "@/components/InteractiveHelplineList";
@@ -30,6 +31,17 @@ export const metadata: Metadata = {
     url: "https://atmfinder.varbox.dev/blog/working-bank-atm-near-me-open-now-pakistan",
   },
 };
+
+const MAJOR_NETWORKS = [
+  { name: "HBL", count: "2,100+ ATMs", logo: "/images/banks/bank_hbl.jpg" },
+  { name: "Meezan Bank", count: "1,300+ ATMs", logo: "/images/banks/bank_meezan.jpg" },
+  { name: "UBL", count: "1,400+ ATMs", logo: "/images/banks/bank_ubl.jpg" },
+  { name: "MCB Bank", count: "1,450+ ATMs", logo: "/images/banks/bank_mcb.jpg" },
+  { name: "Bank Alfalah", count: "950+ ATMs", logo: "/images/banks/bank_alfalah.jpg" },
+  { name: "Askari Bank", count: "600+ ATMs", logo: "/images/banks/bank_askari.jpg" },
+  { name: "Allied Bank", count: "1,550+ ATMs", logo: "/images/banks/bank_allied.jpg" },
+  { name: "National Bank", count: "1,500+ ATMs", logo: "/images/banks/bank_nbp.jpg" },
+];
 
 const FAQ_ITEMS = [
   {
@@ -147,7 +159,7 @@ export default function WorkingAtmArticlePage() {
                 specifically for <strong>&quot;Bank ATM&quot;</strong> rather than generic booths.
                 There is a very practical reason for this:
               </p>
-              <div className="space-y-3 pl-1">
+              <div className="space-y-3 pl-1 mb-6">
                 <div className="p-3.5 rounded-2xl bg-canvas-soft border border-canvas-border/80">
                   <strong className="text-ink-950 block text-sm">Branch-Attached Security</strong>
                   <span className="text-xs text-ink-600 mt-0.5 block">
@@ -170,12 +182,41 @@ export default function WorkingAtmArticlePage() {
                   </span>
                 </div>
               </div>
+
+              {/* Major Bank Networks with Authentic Logos */}
+              <div className="rounded-2xl border border-canvas-border bg-canvas-soft/60 p-5">
+                <div className="text-xs font-bold uppercase tracking-wider text-ink-900 mb-3">
+                  Major Bank ATM Networks in Pakistan:
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                  {MAJOR_NETWORKS.map((bank) => (
+                    <div
+                      key={bank.name}
+                      className="flex items-center gap-2.5 p-2 rounded-xl bg-white border border-canvas-border shadow-2xs"
+                    >
+                      <div className="relative h-7 w-7 flex-shrink-0 overflow-hidden rounded-md border border-canvas-border">
+                        <Image
+                          src={bank.logo}
+                          alt={bank.name}
+                          width={28}
+                          height={28}
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold text-ink-950 truncate">{bank.name}</div>
+                        <div className="text-[10px] text-ink-400">{bank.count}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </section>
 
             {/* Section 2: Interactive Calculator */}
             <InteractiveFeeCalculator />
 
-            {/* Section 3 */}
+            {/* Section 3: Live Community Verification with App Screenshot */}
             <section className="rounded-3xl border border-canvas-border bg-white p-7 sm:p-9 shadow-xs">
               <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-ink-950 mb-4 flex items-center gap-2.5">
                 <ShieldCheck className="h-5 w-5 text-brand-500 flex-shrink-0" />
@@ -185,11 +226,27 @@ export default function WorkingAtmArticlePage() {
                 Traditional map apps only show you where a physical building is located. They cannot
                 tell you:
               </p>
-              <ul className="list-disc pl-5 space-y-2 mb-4 text-ink-600 text-sm sm:text-base">
+              <ul className="list-disc pl-5 space-y-2 mb-6 text-ink-600 text-sm sm:text-base">
                 <li>Whether the ATM ran out of cash 15 minutes ago.</li>
                 <li>Whether the branch shutter is locked down after hours.</li>
                 <li>Whether the machine is only dispensing Rs. 5,000 notes when you need Rs. 1,000.</li>
               </ul>
+
+              {/* Real App Screenshot Showcase */}
+              <div className="rounded-2xl border border-canvas-border bg-canvas-soft p-4 sm:p-6 mb-6">
+                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl border border-canvas-border bg-ink-950/5 shadow-sm">
+                  <Image
+                    src="/images/app-screens/multi-banks-cluster-map-screen.png"
+                    alt="ATM Finder Pakistan Live Cluster Map Screen"
+                    fill
+                    className="object-cover object-top"
+                  />
+                </div>
+                <div className="text-center text-xs text-ink-500 mt-3 font-medium">
+                  ATM Finder Pakistan: Multi-bank radar map showing live cash pins and distance sorting
+                </div>
+              </div>
+
               <p className="text-sm sm:text-base">
                 <strong>ATM Finder Pakistan</strong> solves this through crowdsourced community
                 status. When a user withdraws cash, they tap a single button to report status:
@@ -203,14 +260,14 @@ export default function WorkingAtmArticlePage() {
             {/* Section 4: Interactive Helplines */}
             <InteractiveHelplineList />
 
-            {/* In-Article App Banner */}
+            {/* In-Article App Banner with Brand Accent */}
             <div className="rounded-3xl border border-brand-200 bg-brand-50/70 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-brand-600 block mb-1">
-                  ATM Finder App
+                  ATM Finder Pakistan
                 </span>
                 <h3 className="text-lg sm:text-xl font-bold text-ink-950">
-                  Find Working ATMs Open Now on Your Phone
+                  Find Working Bank ATMs Open Now
                 </h3>
                 <p className="text-sm text-ink-500 mt-1">
                   Locate 24/7 bank ATMs with live community cash status across 20+ Pakistani banks.
@@ -220,7 +277,7 @@ export default function WorkingAtmArticlePage() {
                 href="https://play.google.com/store/apps/details?id=dev.varbox.atmfinder"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-accent cta-shine flex-shrink-0 px-5 py-2.5 text-xs font-bold inline-flex items-center gap-2"
+                className="btn-accent cta-shine flex-shrink-0 px-6 py-3 text-sm font-bold inline-flex items-center gap-2"
               >
                 <ArrowDownToLine className="h-4 w-4" />
                 <span>Get on Google Play</span>
