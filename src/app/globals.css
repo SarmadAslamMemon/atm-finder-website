@@ -148,10 +148,8 @@
   .hero-banner-media {
     position: absolute;
     inset: 0;
-    background-image: url("/images/brand/hero-bg.jpg");
-    background-size: cover;
-    background-position: center;
-    opacity: 0.22;
+    background: radial-gradient(circle at 80% 20%, rgba(255, 87, 51, 0.15) 0%, transparent 60%);
+    opacity: 0.5;
     pointer-events: none;
   }
 

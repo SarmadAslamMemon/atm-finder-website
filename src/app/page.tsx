@@ -220,6 +220,7 @@ function CoverageOrbit({ banks }: { banks: typeof BANK_LIST }) {
                       alt={bank.name}
                       width={56}
                       height={56}
+                      unoptimized
                     />
                   </div>
                 </div>
@@ -251,7 +252,6 @@ export default function HomePage() {
     <div className="overflow-hidden">
       {/* ── Hero: dark warm → coral (~62vh), orange logo readable, wave rises L→R ── */}
       <section className="hero-banner">
-        {/* Optional photo: place file at public/images/brand/hero-bg.jpg */}
         <div className="hero-banner-media" aria-hidden />
         <div className="hero-banner-shade" aria-hidden />
 
