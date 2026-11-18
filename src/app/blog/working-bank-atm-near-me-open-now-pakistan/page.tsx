@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowLeft, CheckCircle2, Clock, MapPin, AlertTriangle, PhoneCall, ShieldCheck, ArrowDownToLine } from "lucide-react";
+import { ArrowLeft, Clock, MapPin, ShieldCheck, ArrowDownToLine, PhoneCall } from "lucide-react";
+import InteractiveFeeCalculator from "@/components/InteractiveFeeCalculator";
+import InteractiveHelplineList from "@/components/InteractiveHelplineList";
+import InteractiveFaqAccordion from "@/components/InteractiveFaqAccordion";
 
 export const metadata: Metadata = {
   title: "How to Find Working Bank ATMs Near You Open Now in Pakistan (Cash Guide)",
@@ -108,17 +110,15 @@ export default function WorkingAtmArticlePage() {
           </Link>
 
           {/* Article Header */}
-          <header className="rounded-3xl border border-canvas-border bg-white p-7 sm:p-10 shadow-sm mb-10">
-            <div className="flex flex-wrap items-center gap-2.5 text-xs font-semibold text-ink-400 mb-4">
-              <span className="rounded-full bg-brand-50 px-3 py-1 font-bold text-brand-600">
-                ATM Guide
-              </span>
+          <header className="rounded-3xl border border-canvas-border bg-white p-7 sm:p-10 shadow-xs mb-8">
+            <div className="flex flex-wrap items-center gap-2.5 text-xs font-medium text-ink-400 mb-3">
+              <span className="font-semibold text-brand-600">Cash &amp; ATM Access</span>
               <span>•</span>
               <span className="flex items-center gap-1">
                 <Clock className="h-3.5 w-3.5" /> 5 min read
               </span>
               <span>•</span>
-              <span>Updated November 2026</span>
+              <span>November 2026</span>
             </div>
 
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-ink-950 leading-tight">
@@ -126,20 +126,20 @@ export default function WorkingAtmArticlePage() {
             </h1>
 
             <p className="mt-4 text-base sm:text-lg text-ink-500 leading-relaxed">
-              We&apos;ve all lived through it: running on empty cash late at night or during the 1st
+              We&apos;ve all lived through it: running low on cash late at night or during the 1st
               of the month, driving between 3 different bank machines, only to be greeted by a taped
-              paper note: <em>&quot;Out of Cash&quot;</em> or a black screen. Here is how to find a
+              paper note: <em>&quot;Out of Cash&quot;</em> or a black screen. Here is how to locate a
               verified, working bank ATM near you open right now in Pakistan without burning fuel or
               wasting time.
             </p>
           </header>
 
           {/* Main Content Body */}
-          <div className="space-y-10 text-ink-700 leading-relaxed text-base sm:text-[17px]">
+          <div className="space-y-8 text-ink-700 leading-relaxed text-base sm:text-[17px]">
             {/* Section 1 */}
-            <section className="rounded-3xl border border-canvas-border bg-white p-7 sm:p-10 shadow-sm">
+            <section className="rounded-3xl border border-canvas-border bg-white p-7 sm:p-9 shadow-xs">
               <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-ink-950 mb-4 flex items-center gap-2.5">
-                <MapPin className="h-6 w-6 text-brand-500 flex-shrink-0" />
+                <MapPin className="h-5 w-5 text-brand-500 flex-shrink-0" />
                 <span>1. Why Searching &quot;Bank ATM&quot; Beats Standalone Machines</span>
               </h2>
               <p className="mb-4">
@@ -147,98 +147,67 @@ export default function WorkingAtmArticlePage() {
                 specifically for <strong>&quot;Bank ATM&quot;</strong> rather than generic booths.
                 There is a very practical reason for this:
               </p>
-              <ul className="space-y-3 pl-2">
-                <li className="flex items-start gap-2.5">
-                  <CheckCircle2 className="h-5 w-5 text-cash-500 flex-shrink-0 mt-0.5" />
-                  <span>
-                    <strong>Branch-Attached Security:</strong> Bank-attached ATMs have 24/7 dedicated
-                    armed security guards, proper lighting, and active CCTV surveillance.
+              <div className="space-y-3 pl-1">
+                <div className="p-3.5 rounded-2xl bg-canvas-soft border border-canvas-border/80">
+                  <strong className="text-ink-950 block text-sm">Branch-Attached Security</strong>
+                  <span className="text-xs text-ink-600 mt-0.5 block">
+                    Bank-attached ATMs feature 24/7 armed security guards, reliable backup power
+                    generators, and active CCTV surveillance.
                   </span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <CheckCircle2 className="h-5 w-5 text-cash-500 flex-shrink-0 mt-0.5" />
-                  <span>
-                    <strong>Higher Cash Capacity:</strong> Branch machines are refilled directly from
-                    the branch vault twice as often as off-site machines located in malls or fuel
-                    stations.
+                </div>
+                <div className="p-3.5 rounded-2xl bg-canvas-soft border border-canvas-border/80">
+                  <strong className="text-ink-950 block text-sm">Higher Cash Capacity</strong>
+                  <span className="text-xs text-ink-600 mt-0.5 block">
+                    Branch machines are restocked directly from the branch vault twice as often as
+                    off-site machines in shopping plazas or petrol stations.
                   </span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <CheckCircle2 className="h-5 w-5 text-cash-500 flex-shrink-0 mt-0.5" />
-                  <span>
-                    <strong>Card Retrieval Assistance:</strong> If your card gets swallowed or an
-                    error occurs during banking hours, branch staff can assist you immediately on-site.
+                </div>
+                <div className="p-3.5 rounded-2xl bg-canvas-soft border border-canvas-border/80">
+                  <strong className="text-ink-950 block text-sm">Card Retrieval Assistance</strong>
+                  <span className="text-xs text-ink-600 mt-0.5 block">
+                    If an error occurs or your debit card gets captured during business hours, on-site
+                    branch staff can assist you with your original CNIC.
                   </span>
-                </li>
-              </ul>
-            </section>
-
-            {/* Section 2 */}
-            <section className="rounded-3xl border border-canvas-border bg-white p-7 sm:p-10 shadow-sm">
-              <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-ink-950 mb-4 flex items-center gap-2.5">
-                <ShieldCheck className="h-6 w-6 text-brand-500 flex-shrink-0" />
-                <span>2. The 1-Link Fee Trap: Why Bank Filtering Matters</span>
-              </h2>
-              <p className="mb-4">
-                Did you know that every time you use a different bank&apos;s ATM machine in Pakistan,
-                you are charged an inter-bank fee of <strong>Rs. 23.44</strong> per withdrawal?
-              </p>
-              <p className="mb-4">
-                If you withdraw cash 5 times a month using convenient nearby machines from other
-                banks, you lose over <strong>Rs. 1,400 per year</strong> just in 1-Link off-us fees.
-              </p>
-              <div className="rounded-2xl border border-canvas-border bg-canvas-soft p-5">
-                <h3 className="font-bold text-ink-950 mb-2 text-sm uppercase tracking-wider">
-                  Top Retail ATM Networks Across Pakistan:
-                </h3>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-semibold text-ink-700">
-                  <div className="p-3 bg-white rounded-xl border border-canvas-border text-center">
-                    HBL (2,100+ ATMs)
-                  </div>
-                  <div className="p-3 bg-white rounded-xl border border-canvas-border text-center">
-                    Meezan (1,300+ ATMs)
-                  </div>
-                  <div className="p-3 bg-white rounded-xl border border-canvas-border text-center">
-                    UBL (1,400+ ATMs)
-                  </div>
-                  <div className="p-3 bg-white rounded-xl border border-canvas-border text-center">
-                    MCB (1,450+ ATMs)
-                  </div>
                 </div>
               </div>
             </section>
 
+            {/* Section 2: Interactive Calculator */}
+            <InteractiveFeeCalculator />
+
             {/* Section 3 */}
-            <section className="rounded-3xl border border-canvas-border bg-white p-7 sm:p-10 shadow-sm">
+            <section className="rounded-3xl border border-canvas-border bg-white p-7 sm:p-9 shadow-xs">
               <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-ink-950 mb-4 flex items-center gap-2.5">
-                <Clock className="h-6 w-6 text-brand-500 flex-shrink-0" />
-                <span>3. How Community Verification Solves the &quot;Out of Cash&quot; Problem</span>
+                <ShieldCheck className="h-5 w-5 text-brand-500 flex-shrink-0" />
+                <span>2. How Community Verification Solves the &quot;Out of Cash&quot; Problem</span>
               </h2>
               <p className="mb-4">
                 Traditional map apps only show you where a physical building is located. They cannot
                 tell you:
               </p>
-              <ul className="list-disc pl-5 space-y-2 mb-4 text-ink-600">
-                <li>Whether the ATM ran out of cash 20 minutes ago.</li>
-                <li>Whether the branch lobby shutter is locked down for the night.</li>
+              <ul className="list-disc pl-5 space-y-2 mb-4 text-ink-600 text-sm sm:text-base">
+                <li>Whether the ATM ran out of cash 15 minutes ago.</li>
+                <li>Whether the branch shutter is locked down after hours.</li>
                 <li>Whether the machine is only dispensing Rs. 5,000 notes when you need Rs. 1,000.</li>
               </ul>
-              <p>
+              <p className="text-sm sm:text-base">
                 <strong>ATM Finder Pakistan</strong> solves this through crowdsourced community
                 status. When a user withdraws cash, they tap a single button to report status:
-                <span className="inline-block mx-1 font-bold text-cash-600">Cash Available 🟢</span>,
-                <span className="inline-block mx-1 font-bold text-amber-600">Low Cash 🟠</span>, or
-                <span className="inline-block mx-1 font-bold text-red-600">No Cash 🔴</span>.
-                Every report carries an honest timestamp so you can judge freshness before leaving
-                home.
+                <span className="inline-block mx-1 font-bold text-cash-600">Cash Available (🟢)</span>,
+                <span className="inline-block mx-1 font-bold text-amber-600">Low Cash (🟠)</span>, or
+                <span className="inline-block mx-1 font-bold text-red-600">No Cash (🔴)</span>.
+                Every report carries an honest timestamp so you can verify freshness before you drive.
               </p>
             </section>
 
+            {/* Section 4: Interactive Helplines */}
+            <InteractiveHelplineList />
+
             {/* In-Article App Banner */}
-            <div className="rounded-3xl border border-brand-200 bg-brand-50 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div className="rounded-3xl border border-brand-200 bg-brand-50/70 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
               <div>
-                <span className="inline-block rounded-full bg-brand-500 px-3 py-0.5 text-xs font-bold text-white mb-2">
-                  100% Free
+                <span className="text-xs font-bold uppercase tracking-wider text-brand-600 block mb-1">
+                  ATM Finder App
                 </span>
                 <h3 className="text-lg sm:text-xl font-bold text-ink-950">
                   Find Working ATMs Open Now on Your Phone
@@ -258,69 +227,12 @@ export default function WorkingAtmArticlePage() {
               </a>
             </div>
 
-            {/* Section 4 */}
-            <section className="rounded-3xl border border-canvas-border bg-white p-7 sm:p-10 shadow-sm">
-              <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-ink-950 mb-4 flex items-center gap-2.5">
-                <PhoneCall className="h-6 w-6 text-brand-500 flex-shrink-0" />
-                <span>4. Emergency Bank Helpline Numbers for ATM Card Issues</span>
+            {/* Section 5: Interactive FAQ Accordion */}
+            <section className="rounded-3xl border border-canvas-border bg-white p-7 sm:p-9 shadow-xs">
+              <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-ink-950 mb-5">
+                Frequently Asked Questions
               </h2>
-              <p className="mb-4">
-                If an ATM machine eats your card or declines a transaction while deducting balance,
-                call these official 24/7 helplines immediately to block or file an ATM dispute:
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-                <div className="p-3.5 rounded-xl border border-canvas-border bg-canvas-soft flex items-center justify-between">
-                  <div>
-                    <div className="font-bold text-ink-950">HBL Helpline</div>
-                    <div className="text-xs text-ink-400">111-111-425</div>
-                  </div>
-                  <a href="tel:021111111425" className="text-xs font-bold text-brand-600 underline">
-                    Call
-                  </a>
-                </div>
-                <div className="p-3.5 rounded-xl border border-canvas-border bg-canvas-soft flex items-center justify-between">
-                  <div>
-                    <div className="font-bold text-ink-950">Meezan Bank Helpline</div>
-                    <div className="text-xs text-ink-400">111-331-336</div>
-                  </div>
-                  <a href="tel:021111331336" className="text-xs font-bold text-brand-600 underline">
-                    Call
-                  </a>
-                </div>
-                <div className="p-3.5 rounded-xl border border-canvas-border bg-canvas-soft flex items-center justify-between">
-                  <div>
-                    <div className="font-bold text-ink-950">UBL Helpline</div>
-                    <div className="text-xs text-ink-400">111-825-888</div>
-                  </div>
-                  <a href="tel:021111825888" className="text-xs font-bold text-brand-600 underline">
-                    Call
-                  </a>
-                </div>
-                <div className="p-3.5 rounded-xl border border-canvas-border bg-canvas-soft flex items-center justify-between">
-                  <div>
-                    <div className="font-bold text-ink-950">MCB Bank Helpline</div>
-                    <div className="text-xs text-ink-400">111-000-622</div>
-                  </div>
-                  <a href="tel:021111000622" className="text-xs font-bold text-brand-600 underline">
-                    Call
-                  </a>
-                </div>
-              </div>
-            </section>
-
-            {/* FAQ Section */}
-            <section className="rounded-3xl border border-canvas-border bg-white p-7 sm:p-10 shadow-sm">
-              <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-ink-950 mb-6">
-                Frequently Asked Questions (FAQ)
-              </h2>
-              <div className="space-y-6">
-                {FAQ_ITEMS.map((item, idx) => (
-                  <div key={idx} className="border-b border-canvas-border pb-5 last:border-b-0 last:pb-0">
-                    <h3 className="font-bold text-ink-950 text-base sm:text-lg mb-2">{item.q}</h3>
-                    <p className="text-sm text-ink-500 leading-relaxed">{item.a}</p>
-                  </div>
-                ))}
-              </div>
+              <InteractiveFaqAccordion items={FAQ_ITEMS} />
             </section>
           </div>
         </div>

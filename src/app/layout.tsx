@@ -95,13 +95,13 @@ export default function RootLayout({
             <div className="grid gap-10 lg:grid-cols-12 lg:gap-8">
               <div className="space-y-5 lg:col-span-5">
                 <div className="flex items-center gap-2.5">
-                  <div className="h-10 w-10 overflow-hidden rounded-xl bg-ink-950 p-0.5">
+                  <div className="relative h-10 w-10 overflow-hidden rounded-[12px] shadow-soft">
                     <Image
                       src="/images/brand/app_logo.png"
                       alt="ATM Finder"
                       width={40}
                       height={40}
-                      className="h-full w-full rounded-[9px] object-cover"
+                      className="h-full w-full object-cover"
                     />
                   </div>
                   <div>
@@ -243,12 +243,13 @@ export default function RootLayout({
 
         <div className="fixed bottom-3 left-3 right-3 z-40 flex items-center justify-between rounded-2xl border border-white/10 bg-ink-950/95 px-4 py-3 shadow-lift backdrop-blur-md sm:hidden">
           <div className="flex items-center gap-3">
-            <div className="h-9 w-9 overflow-hidden rounded-xl bg-ink-900">
+            <div className="relative h-9 w-9 overflow-hidden rounded-xl shadow-soft">
               <Image
                 src="/images/brand/app_logo.png"
                 alt="ATM Finder"
                 width={36}
                 height={36}
+                className="h-full w-full object-cover"
               />
             </div>
             <div>
