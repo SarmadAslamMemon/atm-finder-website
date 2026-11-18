@@ -11,6 +11,7 @@ const LINKS = [
   { href: "/#features", label: "Features" },
   { href: "/#banks", label: "Banks" },
   { href: "/#radar", label: "Radar" },
+  { href: "/blog", label: "Guides" },
   { href: "/#urdu", label: "Language" },
   { href: "/#faq", label: "FAQ" },
 ];

@@ -157,6 +157,14 @@ export default function RootLayout({
                         FAQ
                       </Link>
                     </li>
+                    <li>
+                      <Link
+                        href="/blog"
+                        className="transition hover:text-brand-600"
+                      >
+                        Guides &amp; Blog
+                      </Link>
+                    </li>
                   </ul>
                 </div>
 
